@@ -1,0 +1,69 @@
+<!-- templates/game/game_result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Result</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 3rem;
+        }
+        .table th, .table td {
+            vertical-align: middle;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004d99;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-5">Game Result</h1>
+
+        <div class="alert alert-info text-center">
+            Your score is: <strong>{{ score }}</strong>
+        </div>
+
+        <h2 class="my-4">Leaderboard</h2>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for player in leaderboard %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ player.name }}</td>
+                    <td>{{ player.score }}</td>
+                    <td>{{ player.date }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{% url 'game:password_game' %}" class="btn btn-primary mt-3">Play Again</a>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
